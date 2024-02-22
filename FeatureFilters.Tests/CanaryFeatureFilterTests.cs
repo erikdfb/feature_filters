@@ -5,7 +5,7 @@ using Microsoft.FeatureManagement;
 
 namespace FeatureFilters.Tests;
 
-public class CanaryFilterTests
+public class CanaryFeatureFilterTests
 {
     [Theory]
     [InlineData(0, 0, 0)] // 0%
@@ -38,7 +38,7 @@ public class CanaryFilterTests
 
         serviceCollection.AddSingleton<IConfiguration>(configuration);
         serviceCollection.AddFeatureManagement()
-            .AddFeatureFilter<CanaryFilter>();
+            .AddFeatureFilter<CanaryFeatureFilter>();
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
@@ -78,7 +78,7 @@ public class CanaryFilterTests
         var services = new ServiceCollection();
         services.AddSingleton<IConfiguration>(configuration);
         services.AddFeatureManagement()
-            .AddFeatureFilter<CanaryFilter>();
+            .AddFeatureFilter<CanaryFeatureFilter>();
 
         var serviceProvider = services.BuildServiceProvider();
 

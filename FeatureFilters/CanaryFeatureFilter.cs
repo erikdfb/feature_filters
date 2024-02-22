@@ -6,20 +6,20 @@ using Microsoft.FeatureManagement;
 namespace FeatureFilters;
 
 [FilterAlias(Alias)]
-public class CanaryFilter : IFeatureFilter
+public class CanaryFeatureFilter : IFeatureFilter
 {
     private const string Alias = "Canary";
     
     private readonly ILogger _logger;
 
-    public CanaryFilter(ILoggerFactory loggerFactory)
+    public CanaryFeatureFilter(ILoggerFactory loggerFactory)
     {
-        _logger = loggerFactory.CreateLogger<CanaryFilter>();
+        _logger = loggerFactory.CreateLogger<CanaryFeatureFilter>();
     }
 
     public Task<bool> EvaluateAsync(FeatureFilterEvaluationContext context)
     {
-        var settings = context.Parameters.Get<CanaryFilterSettings>();
+        var settings = context.Parameters.Get<CanaryFeatureFilterSettings>();
 
         bool result = true;
 
